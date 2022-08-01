@@ -12,14 +12,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Startup Name Generator',
-      home: Scaffold(
-        appBar: AppBar(
-          title: const Text('Startup Name Generator'),
-        ),
-        body: const Center(
-          child: RandomWords(),
-        ),
-      ),
+      home: RandomWords()
     );
   }
 
@@ -54,8 +47,10 @@ class _RandomWordsState extends State<RandomWords> {
     return ListView.builder(
       padding: const EdgeInsets.all(16.0),
       itemBuilder: (context, i) {
+        // 1, 2, 3, 4, 5, ...
         if (i.isOdd) return const Divider();
 
+        // 0, 1, 1, 2, 2, ...
         final index = i ~/ 2;
         if (index >= _suggestions.length) {
           _suggestions.addAll(generateWordPairs().take(10));
