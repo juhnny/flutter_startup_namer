@@ -15,7 +15,6 @@ class MyApp extends StatelessWidget {
       home: RandomWords()
     );
   }
-
 }
 
 // stful 이라고 쓰면 자동완성 가능
@@ -75,6 +74,7 @@ class _RandomWordsState extends State<RandomWords> {
           style: _biggerFont,
         ),
       ),
+    //아이콘 추가 위치
     );
   }
 }
