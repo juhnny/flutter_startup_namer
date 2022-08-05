@@ -1,4 +1,5 @@
 import 'package:english_words/english_words.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -11,13 +12,25 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Startup Name Generator',
-      home: RandomWords()
-    );
+        title: 'Startup Name Generator',
+        home: RandomWords());
   }
 }
 
 // stful 이라고 쓰면 자동완성 가능
+// class AAA extends StatefulWidget {
+//   const AAA({Key? key}) : super(key: key);
+//
+//   @override
+//   State<AAA> createState() => _AAAState();
+// }
+//
+// class _AAAState extends State<AAA> {
+//   @override
+//   Widget build(BuildContext context) {
+//     return Container();
+//   }
+// }
 
 class RandomWords extends StatefulWidget {
   const RandomWords({super.key});
@@ -25,9 +38,14 @@ class RandomWords extends StatefulWidget {
   @override
   State<RandomWords> createState() => _RandomWordsState();
 }
-
+// Dart uses underscores instead of access modifier keywords like public or private
+// Prefixing an identifier with an underscore enforces privacy in the Dart language
+// and is a recommended best practice for State objects.
+// Libraries not only provide APIs, but are a unit of privacy:
+// identifiers that start with an underscore (_) are visible only inside the library.
+// Every Dart app is a library, even if it doesn’t use a library directive.
 class _RandomWordsState extends State<RandomWords> {
-  //앞에 붙인 underscore는 어디에서나 이 필드에 접근할 수 있다는 의미
+  //앞에 붙인 underscore는 어디에서나 이 필드에 접근할 수 있다는 의미(??)
   final _suggestions = <WordPair>[]; // NEW
   //여러 곳에서 쓰기 위해 TextStyle을 변수에 담는다
   final _biggerFont = const TextStyle(fontSize: 18); // NEW
@@ -38,8 +56,7 @@ class _RandomWordsState extends State<RandomWords> {
         appBar: AppBar(
           title: const Text('Startup Name Generator'),
         ),
-        body: _buildSuggestions()
-    );
+        body: _buildSuggestions());
   }
 
   Widget _buildSuggestions() {
@@ -65,7 +82,7 @@ class _RandomWordsState extends State<RandomWords> {
     );
   }
 
-  Widget _buildRow(WordPair pair){
+  Widget _buildRow(WordPair pair) {
     return ListTile(
       title: Transform.rotate(
         angle: -0.2,
@@ -74,7 +91,10 @@ class _RandomWordsState extends State<RandomWords> {
           style: _biggerFont,
         ),
       ),
-    //아이콘 추가 위치
+      //아이콘 추가 위치
     );
   }
 }
+
+// The StatefulWidget object is, itself, immutable and can be thrown away and regenerated,
+// but the State object persists over the lifetime of the widget.
